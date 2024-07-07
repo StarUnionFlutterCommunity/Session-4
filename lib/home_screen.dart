@@ -18,6 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int selectedIndex = 0;
 
+  List<String> data = [
+    "All",
+    "Red",
+    "Green",
+    "Blue",
+    "Yellow",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,9 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     customButton(
                       text: _categories[i],
                       isSelected: selectedIndex == i,
-                      onPressed: (){
+                      onPressed: () {
                         setState(() {
-                          selectedIndex = i;   
+                          selectedIndex = i;
                         });
                       },
                     ),
@@ -74,57 +82,23 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 20,
             ),
-
             Expanded(
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
+              child: ListView.separated(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.teal,
                     ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      color: Colors.red,
-                      height: 200,
-                      width: 300,
-                    ),
-                  ],
-                ),
+                    title: Text("Application Name ${data[index]}"),
+                    subtitle: Text("Application Details $index"),
+                    trailing: Icon(Icons.access_alarm_outlined),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return Divider();
+                },
               ),
             )
           ],

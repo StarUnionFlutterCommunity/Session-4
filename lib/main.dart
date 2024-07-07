@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:session/home.dart';
 
 import 'home_screen.dart';
 
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Session',
       theme: ThemeData.light(),
-      home: HomeScreen(),
+      home: Home(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
